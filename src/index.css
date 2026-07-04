@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --slate-950: #f8fafc; /* Day (Light) bg */
+  --slate-900: #ffffff; /* Day (Light) secondary card bg */
+  --slate-850: #f1f5f9; /* Day (Light) lines / alternate bg */
+  --slate-800: #e2e8f0; /* Day (Light) borders */
+  --slate-700: #cbd5e1; /* Day (Light) border highlights */
+  --slate-400: #475569; /* Day (Light) text muted */
+  --slate-300: #334155; /* Day (Light) text primary */
+  --slate-200: #1e293b; /* Day (Light) text bright */
+  --slate-100: #0f172a; /* Day (Light) text brightest (headings) */
+  
+  --bg-app: #f8fafc;
+  --text-main: #334155;
+  --text-bright: #0f172a;
+  
+  --glass-card-bg: rgba(255, 255, 255, 0.75);
+  --glass-card-border: rgba(15, 23, 42, 0.08);
+  --accent-glow-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.12);
+  --hero-gradient-overlay: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+  --custom-metallic: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+  
+  --logo-text: #0f172a;
+}
+
+.dark {
+  --slate-950: #050B18; /* Night (Dark) bg */
+  --slate-900: #081022; /* Night (Dark) secondary card bg */
+  --slate-850: #0f172a; /* Night (Dark) lines / alternate bg */
+  --slate-800: #1e293b; /* Night (Dark) borders */
+  --slate-700: #334155; /* Night (Dark) border highlights */
+  --slate-400: #94a3b8; /* Night (Dark) text muted */
+  --slate-300: #cbd5e1; /* Night (Dark) text primary */
+  --slate-200: #e2e8f0; /* Night (Dark) text bright */
+  --slate-100: #f8fafc; /* Night (Dark) text brightest (headings) */
+  
+  --bg-app: #050B18;
+  --text-main: #cbd5e1;
+  --text-bright: #f8fafc;
+  
+  --glass-card-bg: rgba(5, 11, 24, 0.65);
+  --glass-card-border: rgba(255, 255, 255, 0.08);
+  --accent-glow-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+  --hero-gradient-overlay: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+  --custom-metallic: linear-gradient(135deg, #0A0E1A 0%, #162036 100%);
+  
+  --logo-text: #ffffff;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-slate-950: var(--slate-950);
+  --color-slate-900: var(--slate-900);
+  --color-slate-850: var(--slate-850);
+  --color-slate-800: var(--slate-800);
+  --color-slate-700: var(--slate-700);
+  --color-slate-400: var(--slate-400);
+  --color-slate-300: var(--slate-300);
+  --color-slate-200: var(--slate-200);
+  --color-slate-100: var(--slate-100);
+}
+
+/* Immersive UI Specific styles */
+body {
+  background-color: var(--slate-950) !important;
+  color: var(--slate-300) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.metallic-bg {
+  background: var(--custom-metallic) !important;
+  transition: background 0.3s ease;
+}
+
+.glass-card {
+  background: var(--glass-card-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-card-border) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accent-glow {
+  box-shadow: var(--accent-glow-shadow) !important;
+}
+
+.hero-gradient {
+  background: var(--hero-gradient-overlay) !important;
+  transition: background 0.3s ease;
+}
+
+/* Specific hardcoded background classes across components */
+.bg-\[\#050B18\] {
+  background-color: var(--slate-950) !important;
+}
+
+.bg-\[\#050B18\]\/50 {
+  background-color: var(--slate-850) !important;
+}
+
+.bg-\[\#050B18\]\/95 {
+  background-color: var(--slate-900) !important;
+}
+
+/* Map heading tags to adaptive colors globally */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--slate-100) !important;
+  transition: color 0.3s ease;
+}
+
+/* Ensure headings with explicit white utility classes also adapt */
+.text-white {
+  color: var(--slate-100) !important;
+  transition: color 0.3s ease;
+}
+
+/* Exceptions: Keep white text always white on dark-colored buttons, links, statuses */
+button.text-white,
+a.text-white,
+.bg-blue-600,
+.bg-blue-600 *,
+.bg-blue-500,
+.bg-blue-500 *,
+.bg-emerald-500,
+.bg-emerald-500 *,
+.text-white-always {
+  color: #ffffff !important;
+}
+
+/* Custom scrollbar adjustments */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: var(--slate-950);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--slate-800);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-700);
+}

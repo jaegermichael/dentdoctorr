@@ -1,0 +1,10 @@
+{
+  "name": "Dent Doctor",
+  "description": "Premium vehicle paintless dent removal (PDR) and dent repair services website with interactive AI damage analysis.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
