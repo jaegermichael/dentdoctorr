@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Car, Menu, X, Phone, ShieldCheck, Sun, Moon } from "lucide-react";
+import { Menu, X, Phone, ShieldCheck, Sun, Moon } from "lucide-react";
+import logoDark from "../assets/images/dent-doctor-logo.png";
+import logoLight from "../assets/images/dent-doctor-logo-light.png";
 
 interface HeaderProps {
   onQuoteClick: () => void;
@@ -66,19 +68,17 @@ export default function Header({ onQuoteClick, theme = "light", onToggleTheme }:
             <a
               href="#"
               onClick={(e) => handleNavClick(e, "#")}
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-3 group"
+              aria-label="Dent Doctor ZW — Home"
             >
-              <div className="bg-blue-600 text-white p-2 rounded-lg group-hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/20">
-                <Car className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-xl font-black tracking-tight text-white font-sans flex items-center gap-1">
-                  DENT <span className="text-blue-500">DOCTOR</span>
-                </span>
-                <span className="block text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-1 font-bold">
-                  Paintless Dent Repair
-                </span>
-              </div>
+              <img
+                src={theme === "dark" ? logoDark : logoLight}
+                alt="Dent Doctor ZW"
+                className="h-12 sm:h-14 w-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="hidden xl:block text-[10px] font-mono tracking-widest text-slate-400 uppercase font-bold border-l border-slate-700/60 pl-3">
+                Paintless<br />Dent Repair
+              </span>
             </a>
 
             {/* Desktop Nav */}

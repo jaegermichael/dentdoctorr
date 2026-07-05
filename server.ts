@@ -7,7 +7,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Set up middleware to parse JSON, with a size limit to allow base64 images
 app.use(express.json({ limit: "25mb" }));

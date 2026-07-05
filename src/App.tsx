@@ -92,9 +92,10 @@ export default function App() {
       </main>
 
       {/* Footer & Final Call-To-Action Banner */}
-      <Footer 
-        onQuoteClick={() => handleOpenQuote()} 
-        onContactClick={() => scrollToSection("#contact")} 
+      <Footer
+        onQuoteClick={() => handleOpenQuote()}
+        onContactClick={() => scrollToSection("#contact")}
+        theme={theme || "light"}
       />
 
       {/* Instant AI Damage Estimation & Quote Modal Form */}

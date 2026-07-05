@@ -1,12 +1,15 @@
 import React from "react";
-import { Car, Phone, Mail, MapPin, Facebook, Instagram, Twitter, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, ShieldCheck } from "lucide-react";
+import logoDark from "../assets/images/dent-doctor-logo.png";
+import logoLight from "../assets/images/dent-doctor-logo-light.png";
 
 interface FooterProps {
   onQuoteClick: () => void;
   onContactClick: () => void;
+  theme?: "light" | "dark";
 }
 
-export default function Footer({ onQuoteClick, onContactClick }: FooterProps) {
+export default function Footer({ onQuoteClick, onContactClick, theme = "light" }: FooterProps) {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
@@ -66,15 +69,12 @@ export default function Footer({ onQuoteClick, onContactClick }: FooterProps) {
           
           {/* Col 1: Brand Info */}
           <div className="space-y-5">
-            <div className="flex items-center gap-2">
-              <div className="bg-blue-600 text-white p-2 rounded-lg">
-                <Car className="w-5 h-5" />
-              </div>
-              <span className="text-lg font-black tracking-tight text-white">
-                DENT <span className="text-blue-500">DOCTOR</span>
-              </span>
-            </div>
-            
+            <img
+              src={theme === "dark" ? logoDark : logoLight}
+              alt="Dent Doctor ZW"
+              className="h-24 w-auto object-contain rounded-2xl drop-shadow-lg"
+            />
+
             <p className="text-sm font-light leading-relaxed text-slate-400">
               Region's premier vehicle paintless dent removal (PDR) experts, restoring flawless body panels with original warranty and same-day scheduling.
             </p>

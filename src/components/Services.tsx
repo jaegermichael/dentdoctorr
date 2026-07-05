@@ -66,8 +66,8 @@ export default function Services({ onQuoteClick }: ServicesProps) {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Services Grid — Arch / Capsule Card Layout */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7">
           {SERVICES.map((service, index) => (
             <motion.div
               key={service.id}
@@ -75,62 +75,36 @@ export default function Services({ onQuoteClick }: ServicesProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group flex flex-col h-full glass-card border border-white/10 rounded-2xl overflow-hidden hover:accent-glow hover:border-blue-500/30 transition-all duration-300 shadow-xl"
+              className="group relative flex flex-col items-center glass-card border border-white/10 rounded-[999px] p-3 pb-8 md:pb-10 hover:accent-glow hover:border-blue-500/30 hover:-translate-y-2 transition-all duration-300 shadow-xl cursor-pointer"
+              onClick={() => setSelectedService(service)}
             >
-              {/* Image Section */}
-              <div className="h-44 w-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all duration-300 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10" />
+              {/* Arch Image */}
+              <div className="w-full aspect-[3/3.4] rounded-[999px] overflow-hidden relative">
                 <img
                   src={service.imageUrl}
                   alt={service.title}
-                  className="w-full h-full object-cover transform scale-102 group-hover:scale-108 transition-transform duration-500"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transform scale-102 group-hover:scale-110 transition-all duration-500"
                   referrerPolicy="no-referrer"
                 />
-                
-                {/* Floating Icon */}
-                <div className="absolute top-4 left-4 z-20 bg-blue-600 text-white p-3 rounded-xl border border-blue-500/30 shadow-lg shadow-blue-600/30">
-                  {getIcon(service.iconName)}
-                </div>
+                <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-all duration-300" />
               </div>
 
-              {/* Service Details */}
-              <div className="p-6 flex flex-col flex-grow space-y-4">
-                <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-slate-400 font-light leading-relaxed flex-grow">
-                  {service.description}
-                </p>
-
-                {/* Micro Benefits list (max 2) */}
-                <ul className="space-y-1.5 pt-2">
-                  {service.benefits.slice(0, 2).map((benefit) => (
-                    <li key={benefit} className="flex items-center gap-2 text-xs font-medium text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
-                      <span className="truncate">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Learn More Button */}
-                <div className="pt-4 border-t border-slate-850 flex items-center justify-between">
-                  <button
-                    onClick={() => setSelectedService(service)}
-                    className="text-xs font-bold text-slate-300 hover:text-blue-400 transition-colors cursor-pointer flex items-center gap-1"
-                  >
-                    Learn More
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-
-                  <button
-                    onClick={() => onQuoteClick(service.id)}
-                    className="text-xs font-mono font-bold bg-slate-900 hover:bg-blue-600 hover:text-white text-blue-400 border border-blue-500/20 hover:border-blue-500 px-3 py-1.5 rounded-lg transition-all duration-200 cursor-pointer"
-                  >
-                    Get Quote
-                  </button>
-                </div>
+              {/* Numbered Circle Badge */}
+              <div className="-mt-7 relative z-10 w-14 h-14 rounded-full bg-slate-900 group-hover:bg-blue-600 border-4 border-slate-950 flex items-center justify-center shadow-lg transition-colors duration-300">
+                <span className="font-mono font-bold text-sm text-slate-100 group-hover:text-white">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
+
+              {/* Service Title */}
+              <h3 className="mt-3 px-3 text-center text-sm md:text-base font-bold text-white tracking-tight leading-snug group-hover:text-blue-400 transition-colors">
+                {service.title}
+              </h3>
+
+              {/* Hover hint */}
+              <span className="mt-2 flex items-center gap-1 text-[11px] font-mono font-bold uppercase tracking-widest text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Learn More <ArrowRight className="w-3 h-3" />
+              </span>
             </motion.div>
           ))}
         </div>
